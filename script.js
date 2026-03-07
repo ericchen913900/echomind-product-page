@@ -1181,6 +1181,7 @@ let targetExplodeProgress = 0;
 let renderedExplodeProgress = 0;
 let explodeRafId = 0;
 let isMenuOpen = false;
+let searchHideTimer = 0;
 
 [...explodeSteps, ...featureCards, ...soundCards, ...supportSteps, ...audienceCards].forEach((card) => {
   card.tabIndex = 0;
@@ -1811,25 +1812,47 @@ function getSearchMatches(query) {
 
 function syncSearchState() {
   if (!searchShell || !searchInput) return;
-  const isOpen = document.activeElement === searchInput || Boolean(searchInput.value.trim());
+  const isOpen = searchShell.contains(document.activeElement) || Boolean(searchInput.value.trim());
   searchShell.classList.toggle("is-open", isOpen);
+  searchShell.classList.toggle("has-value", Boolean(searchInput.value.trim()));
+}
+
+function toggleSearchResultsVisibility(nextState) {
+  if (!searchResults) return;
+
+  window.clearTimeout(searchHideTimer);
+
+  if (nextState) {
+    searchResults.hidden = false;
+    window.requestAnimationFrame(() => {
+      searchResults.classList.add("is-visible");
+    });
+    return;
+  }
+
+  searchResults.classList.remove("is-visible");
+  searchHideTimer = window.setTimeout(() => {
+    searchResults.hidden = true;
+  }, 260);
 }
 
 function renderSearchResults() {
   if (!searchInput || !searchResults) return;
   const copy = translations[currentLanguage];
   const matches = getSearchMatches(searchInput.value);
+  const normalized = searchInput.value.trim();
+  const shouldShowResults = searchShell?.classList.contains("is-open");
 
-  if (!searchInput.value.trim()) {
-    searchResults.hidden = true;
-    searchResults.innerHTML = "";
+  if (!shouldShowResults) {
+    toggleSearchResultsVisibility(false);
     return;
   }
 
-  searchResults.hidden = false;
+  toggleSearchResultsVisibility(true);
+
   searchResults.innerHTML = "";
 
-  if (!matches.length) {
+  if (normalized && !matches.length) {
     const empty = document.createElement("div");
     empty.className = "search-empty";
     empty.textContent = copy.searchEmpty;
@@ -1837,10 +1860,11 @@ function renderSearchResults() {
     return;
   }
 
-  matches.slice(0, 6).forEach((item) => {
+  matches.slice(0, normalized ? 6 : 4).forEach((item, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "search-result";
+    button.style.setProperty("--result-index", String(index));
     button.innerHTML = `<span class="search-result-title">${item.title}</span><span class="search-result-meta">${item.meta}</span>`;
     button.addEventListener("click", () => {
       if (item.href.startsWith("#")) {
@@ -1850,8 +1874,7 @@ function renderSearchResults() {
         window.location.href = item.href;
       }
       searchInput.value = "";
-      searchResults.hidden = true;
-      searchResults.innerHTML = "";
+      toggleSearchResultsVisibility(false);
       syncSearchState();
     });
     searchResults.appendChild(button);
@@ -1872,21 +1895,49 @@ function bindSearch() {
   });
 
   searchInput.addEventListener("blur", () => {
-    window.setTimeout(syncSearchState, 0);
+    window.setTimeout(() => {
+      syncSearchState();
+      renderSearchResults();
+    }, 0);
   });
 
   document.addEventListener("click", (event) => {
     if (!searchShell.contains(event.target)) {
-      searchResults.hidden = true;
-      window.setTimeout(syncSearchState, 0);
+      toggleSearchResultsVisibility(false);
+      window.setTimeout(() => {
+        syncSearchState();
+        renderSearchResults();
+      }, 0);
     }
   });
 
   searchInput.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      searchResults.hidden = true;
-      searchInput.blur();
+      if (searchInput.value.trim()) {
+        searchInput.value = "";
+        renderSearchResults();
+      } else {
+        toggleSearchResultsVisibility(false);
+        searchInput.blur();
+      }
       syncSearchState();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const isTypingContext = target instanceof HTMLElement && (
+      target.tagName === "INPUT" ||
+      target.tagName === "TEXTAREA" ||
+      target.isContentEditable
+    );
+
+    if (event.key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey && !isTypingContext) {
+      event.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+      syncSearchState();
+      renderSearchResults();
     }
   });
 

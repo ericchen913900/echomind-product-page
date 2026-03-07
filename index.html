@@ -31,16 +31,19 @@
           <a href="product-support.html">支援</a>
         </nav>
         <div class="header-utility">
-          <label class="search-shell">
-            <span class="search-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="11" cy="11" r="6.5"></circle>
-                <path d="M16 16l4.25 4.25"></path>
-              </svg>
-            </span>
-            <input class="search-input" id="site-search" name="site-search" type="search" autocomplete="off" placeholder="搜尋支援、條款、隱私..." />
+          <div class="search-shell" role="search">
+            <label class="search-core" for="site-search">
+              <span class="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="6.5"></circle>
+                  <path d="M16 16l4.25 4.25"></path>
+                </svg>
+              </span>
+              <input class="search-input" id="site-search" name="site-search" type="search" autocomplete="off" placeholder="搜尋支援、條款、隱私..." />
+              <span class="search-shortcut" aria-hidden="true">/</span>
+            </label>
             <div class="search-results" hidden></div>
-          </label>
+          </div>
           <div class="lang-switch" role="group" aria-label="語言切換">
             <button class="lang-button is-active" type="button" data-lang-trigger="zh">中</button>
             <button class="lang-button" type="button" data-lang-trigger="en">EN</button>
