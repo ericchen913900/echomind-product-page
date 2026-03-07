@@ -1154,6 +1154,9 @@ const closingEyebrow = closingSection.querySelector(".closing-copy .eyebrow");
 const closingTitle = closingSection.querySelector(".closing-copy h2");
 const closingBody = closingSection.querySelectorAll(".closing-copy p")[1];
 const closingStripItems = Array.from(document.querySelectorAll(".closing-strip span"));
+const splitRevealNodes = Array.from(document.querySelectorAll(".split-reveal"));
+const marqueePrimaryRow = document.querySelector('[data-marquee="primary"]');
+const marqueeSecondaryRow = document.querySelector('[data-marquee="secondary"]');
 
 const ctaCard = document.querySelector(".cta-card");
 const ctaEyebrow = ctaCard.querySelector(".eyebrow");
@@ -1165,6 +1168,7 @@ const footerLogo = document.querySelector(".footer-logo");
 const footerTagline = document.querySelector(".footer-tagline");
 const footerLinkItems = Array.from(document.querySelectorAll(".footer-links a"));
 const footerFineprint = document.querySelector(".footer-fineprint");
+const magneticTargets = Array.from(document.querySelectorAll(".button, .nav-cta, .social-link, .social-icon-link, .footer-links a, .support-link"));
 
 const revealElements = Array.from(document.querySelectorAll(".reveal"));
 
@@ -1202,6 +1206,86 @@ function persistLanguage(lang) {
 
 function setText(node, value) {
   if (node && value !== undefined) node.textContent = value;
+}
+
+function segmentText(text) {
+  const trimmed = text.trim();
+  if (!trimmed) return [];
+
+  if (typeof Intl !== "undefined" && typeof Intl.Segmenter === "function") {
+    const segmenter = new Intl.Segmenter(document.documentElement.lang || "en", { granularity: "word" });
+    const segments = Array.from(segmenter.segment(trimmed))
+      .filter((segment) => segment.isWordLike)
+      .map((segment) => segment.segment.trim())
+      .filter(Boolean);
+
+    if (segments.length) return segments;
+  }
+
+  return trimmed.split(/\s+/).filter(Boolean);
+}
+
+function decorateSplitReveals() {
+  splitRevealNodes.forEach((node) => {
+    const label = node.textContent.trim();
+    const tokens = segmentText(label);
+    const shouldUseSpaces = /\s/.test(label);
+
+    if (!tokens.length) return;
+
+    node.textContent = "";
+    const line = document.createElement("span");
+    line.className = "split-line";
+
+    tokens.forEach((token, index) => {
+      const word = document.createElement("span");
+      word.className = "split-word";
+      word.style.setProperty("--split-index", String(index));
+      word.textContent = token;
+      line.appendChild(word);
+
+      if (shouldUseSpaces && index < tokens.length - 1) {
+        line.appendChild(document.createTextNode(" "));
+      }
+    });
+
+    node.appendChild(line);
+  });
+}
+
+function createMarqueeTrack(items) {
+  const track = document.createElement("div");
+  track.className = "motion-band-track";
+
+  items.forEach((item) => {
+    const chip = document.createElement("span");
+    chip.className = "motion-chip";
+    chip.textContent = item;
+    track.appendChild(chip);
+  });
+
+  return track;
+}
+
+function renderMotionBands() {
+  const copy = translations[currentLanguage];
+  const primaryItems = [...copy.closing.strip, ...copy.closing.strip];
+  const secondaryItems = [...copy.features.cards.map((card) => card.title), ...copy.features.cards.map((card) => card.title)];
+
+  [
+    [marqueePrimaryRow, primaryItems],
+    [marqueeSecondaryRow, secondaryItems]
+  ].forEach(([row, items]) => {
+    if (!row) return;
+    row.innerHTML = "";
+
+    const firstTrack = createMarqueeTrack(items);
+    const secondTrack = createMarqueeTrack(items);
+    secondTrack.setAttribute("aria-hidden", "true");
+
+    row.appendChild(firstTrack);
+    row.appendChild(secondTrack);
+  });
 }
 
 function isMobileLayout() {
@@ -1451,6 +1535,8 @@ function applyLanguage(lang) {
   setText(footerFineprint, copy.footer.fineprint);
 
   insightIndex = 0;
+  decorateSplitReveals();
+  renderMotionBands();
   renderExplodeStep(activeExplodeIndex);
   renderFeaturePanel(activeFeatureIndex);
   updateDashboard();
@@ -1832,6 +1918,33 @@ function bindMobileMenu() {
   setMenuState(false);
 }
 
+function bindMagneticTargets() {
+  if (prefersReducedMotion) return;
+
+  magneticTargets.forEach((target) => {
+    if (!target || target.dataset.magneticBound === "true") return;
+
+    target.dataset.magneticBound = "true";
+    target.classList.add("magnetic-target");
+
+    target.addEventListener("pointermove", (event) => {
+      if (window.innerWidth <= 760) return;
+
+      const bounds = target.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 14;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 12;
+      target.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+    });
+
+    const reset = () => {
+      target.style.translate = "0 0";
+    };
+
+    target.addEventListener("pointerleave", reset);
+    target.addEventListener("blur", reset);
+  });
+}
+
 function bindLanguageSwitch() {
   langButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -1856,6 +1969,7 @@ function init() {
   bindLanguageSwitch();
   bindSearch();
   bindMobileMenu();
+  bindMagneticTargets();
 
   window.addEventListener("scroll", setScrollProgress, { passive: true });
   window.addEventListener("resize", setScrollProgress);
