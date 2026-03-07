@@ -535,6 +535,273 @@ const en = {
   }
 };
 
+const es = {
+  htmlLang: "es",
+  title: "EchoMind | Sistema Operativo Emocional",
+  metaDescription:
+    "EchoMind es un sistema de inteligencia emocional preventiva impulsado por IA para la Generación Z, integrado en audifonos inteligentes para detectar el estres temprano y responder en tiempo real.",
+  navLabel: "Navegacion principal",
+  languageLabel: "Selector de idioma",
+  searchPlaceholder: "Buscar soporte, terminos, privacidad...",
+  searchEmpty: "No se encontro contenido relacionado. Prueba soporte, privacidad o legal.",
+  searchSections: [
+    { title: "Sistema", meta: "Biometria, audio adaptativo y apoyo con consentimiento", href: "#system" },
+    { title: "Funciones", meta: "Deteccion en tiempo real, respuesta sonora y panel emocional", href: "#features" },
+    { title: "Mapa de Estres", meta: "Ondas diarias, puntos criticos semanales y patrones", href: "#dashboard" },
+    { title: "Soporte del Producto", meta: "Activacion, despliegue en campus y controles de confianza", href: "#product-support" },
+    { title: "Terminos de Uso", meta: "Limites del producto y responsabilidad del usuario", href: "#terms-of-use" },
+    { title: "Politica de Privacidad", meta: "Uso de datos, consentimiento, exportacion y borrado", href: "#privacy-policy" },
+    { title: "Aviso Legal", meta: "Posicionamiento no medico y limites ante crisis", href: "#legal-disclaimer" }
+  ],
+  nav: ["Sistema", "Funciones", "Mapa de Estres", "Soporte"],
+  headerCta: "Reservar demo",
+  hero: {
+    eyebrow: "Inteligencia emocional preventiva impulsada por IA",
+    subtitle: "La estabilidad emocional que llevas puesta cada dia.",
+    body:
+      "Disenado para la vida de alta presion de la Generacion Z e integrado en audifonos inteligentes, EchoMind detecta la presion temprano, regula en tiempo real y te ayuda a volver al equilibrio antes de que el agobio tome el control.",
+    actions: ["Explorar funciones clave", "Ver casos de uso"],
+    metricValues: ["15-22", "64%", "4 capas"],
+    metricLabels: ["Rango de edad principal", "de jovenes recurren a la musica cuando se sienten sobrepasados", "capas desde la deteccion hasta el apoyo"]
+  },
+  statement: {
+    eyebrow: "Prevencion, no reaccion",
+    title: "No consuelo despues del colapso. Calma antes de la espiral.",
+    body:
+      "EchoMind no es otra app de bienestar que exige abrirla primero. Vive dentro de los audifonos que los usuarios ya llevan puestos y realiza una cancelacion activa del ruido mental antes de que el estres se convierta en colapso."
+  },
+  problem: {
+    eyebrow: "Por que ahora",
+    title: "No es un problema emocional de unos pocos. Es un patron sistemico de presion en la vida digital de hoy.",
+    body:
+      "El problema de fondo no es solo que los jovenes tengan estres. Es que el estres es invisible, constante y no se gestiona a tiempo. Mientras la mayoria de soluciones siguen exigiendo pedir ayuda primero, lo que falta es un sistema preventivo, discreto y en tiempo real que encaje de forma natural en un habito que ya existe.",
+    cards: [
+      {
+        value: "1 in 7",
+        title: "adolescentes en el mundo viven con trastornos de salud mental",
+        body: "La OMS estima que aproximadamente uno de cada siete adolescentes vive con condiciones de salud mental, siendo la ansiedad y la depresion algunas de las mas comunes."
+      },
+      {
+        value: "44%",
+        title: "de estudiantes de secundaria en EE. UU. reportaron tristeza persistente",
+        body: "Datos de los CDC muestran que casi la mitad de los estudiantes de secundaria en Estados Unidos reportaron sentimientos sostenidos de tristeza o desesperanza en 2021."
+      },
+      {
+        value: "64%",
+        title: "de los jovenes usan la musica como mecanismo principal de afrontamiento",
+        body: "La musica ya es un habito confiable de regulacion emocional, pero sigue siendo pasivo y desestructurado sin deteccion de estres en tiempo real."
+      },
+      {
+        value: "0",
+        title: "herramientas fluidas intervienen justo cuando el estres empieza a subir",
+        body: "La mayoria de productos de salud mental todavia dependen del uso manual de una app o de pedir ayuda de forma explicita, justo cuando ese apoyo es mas dificil de activar."
+      }
+    ]
+  },
+  explode: {
+    eyebrow: "Vista explotada",
+    layerLabel: "Capa",
+    title: "Abre EchoMind y revela el sistema operativo emocional dentro del audifono.",
+    body:
+      "Desde la carcasa acustica hasta el anillo sensorial, el nucleo de audio adaptativo y el tallo de conexion, cada capa existe para detectar el estres antes e intervenir de forma mas natural.",
+    labels: ["Carcasa Acustica", "Anillo Sensor Biometrico", "Nucleo de Audio Adaptativo", "Tallo de Energia y Conexion"],
+    steps: [
+      {
+        title: "Carcasa Acustica",
+        body: "Una estructura exterior protectora que suaviza el ruido del entorno y crea una base mas limpia para una modulacion emocional precisa."
+      },
+      {
+        title: "Anillo Sensor Biometrico",
+        body: "Lee continuamente GSR, HRV y movimiento desde una posicion estable dentro del oido para mantener una linea base emocional personal."
+      },
+      {
+        title: "Nucleo de Audio Adaptativo",
+        body: "Convierte los cambios fisiologicos en decisiones sonoras: BPM mas lento, graves de anclaje y sutiles guias de respiracion."
+      },
+      {
+        title: "Tallo de Energia y Conexion",
+        body: "Gestiona bateria, sincronizacion de baja latencia y conexion segura con la app para que el apoyo escalado y los insights funcionen en un mismo circuito."
+      }
+    ]
+  },
+  features: {
+    signalLabel: "Senal",
+    panelCaptions: ["Captura de Senales Biometricas", "Ingenieria de Sonido Adaptativa", "Inteligencia del Mapa de Estres", "Escalamiento con Consentimiento"],
+    sectionEyebrow: "Un sistema emocional oculto",
+    sectionTitle: "Biometria, ingenieria sonora y apoyo humano funcionando al mismo tiempo.",
+    sectionBody:
+      "Desde la biorespuesta dentro del oido hasta el modelado adaptativo del audio y el escalamiento cuando hace falta, EchoMind transforma la musica pasiva en un sistema estructurado de estabilidad emocional.",
+    cards: [
+      {
+        title: "Deteccion Biometrica en Tiempo Real",
+        body: "La sensorizacion electrodermal de grado clinico sigue GSR, variabilidad cardiaca y movimiento para construir una linea base emocional personal y detectar el estres justo cuando se dispara."
+      },
+      {
+        title: "Ingenieria Sonora Dinamica",
+        body: "Cuando sube la frecuencia cardiaca, la respiracion se acorta o el movimiento se vuelve inquieto, EchoMind remodela el paisaje sonoro en tiempo real con BPM mas lento, graves de anclaje, pistas respiratorias y un cambio fluido hacia una playlist calmante."
+      },
+      {
+        title: "Panel del Mapa de Estres",
+        body: "Ondas diarias, puntos criticos semanales, patrones de disparo y tiempo de recuperacion convierten el estres en algo visible y comprensible."
+      },
+      {
+        title: "Escalamiento de Apoyo por Niveles",
+        body: "Si el estres sigue alto, el sistema escala hacia respiracion guiada, ejercicios de anclaje y, con consentimiento, conexion con consejeros, telemedicina o personas de confianza."
+      }
+    ]
+  },
+  sound: {
+    eyebrow: "Sonido que responde a ti",
+    title: "Cada ajuste esta pensado para bajar el ruido interno, no solo para sonar mas fuerte.",
+    playlistPill: "Cambio a Playlist Calmante",
+    cards: [
+      {
+        title: "Pico de Frecuencia Cardiaca",
+        body: "Reduce el BPM e introduce tonos graves de anclaje para que el cuerpo vuelva a un ritmo manejable."
+      },
+      {
+        title: "Respiracion Acelerada",
+        body: "Agrega pulsos sutiles que guian la respiracion hacia un ritmo mas estable sin sacar al usuario del momento."
+      },
+      {
+        title: "Movimiento Inquieto",
+        body: "Activa capas de audio estabilizadoras para reducir la sobrecarga sensorial y ayudar a recuperar el foco."
+      },
+      {
+        title: "Transicion Fluida",
+        body: "Pasa de forma imperceptible a la playlist calmante del usuario para que la intervencion se sienta continua e invisible."
+      }
+    ]
+  },
+  dashboard: {
+    eyebrow: "Panel del mapa de estres",
+    title: "Convierte la presion invisible en patrones que puedes ver, entender y anticipar.",
+    body:
+      "La app de EchoMind muestra variacion emocional diaria, puntos criticos semanales, patrones de disparo, horas pico y tiempos de recuperacion. No solo dice que estas estresado: muestra cuando empieza, que lo dispara y cuanto tardas en recuperarte.",
+    topbar: ["Hoy", "Mapa de Estres", "09:42"],
+    dailyWaveLabel: "Onda Diaria",
+    dailyWaveStatus: "Calma recuperada en 18 min",
+    hotspotLabel: "Puntos Criticos Semanales",
+    hotspotStatus: "Mar / Jue · 14:00 - 17:00",
+    insightTag: "Insight de Patron",
+    insights: [
+      "Los picos de estres coinciden con ventanas de estudio de alto rendimiento, y el ejercicio es lo que mas acorta la recuperacion.",
+      "Las tardes del martes son el periodo de mayor riesgo, y cambiar antes a la playlist calmante reduce el tiempo de recuperacion.",
+      "Cuando aumenta la deuda de sueno, los picos cardiacos y la respiracion superficial aparecen juntos con mayor frecuencia, lo que sugiere intervenir antes."
+    ]
+  },
+  support: {
+    eyebrow: "Escalamiento con consentimiento",
+    title: "Cuando el sonido por si solo no basta, el sistema sabe cuando aumentar el apoyo.",
+    cards: [
+      {
+        title: "Reinicio Suave",
+        body: "Empieza con la intervencion mas ligera: ajuste de audio, respiracion guiada, anclaje y sin interrumpir el estudio ni el flujo diario."
+      },
+      {
+        title: "Recuperacion Guiada",
+        body: "Si la presion sigue alta, EchoMind activa una secuencia mas completa de estabilizacion guiada para recuperar la sensacion de control."
+      },
+      {
+        title: "Conexion de Confianza",
+        body: "Con consentimiento, EchoMind puede conectar al usuario con consejeria en campus, telemedicina o una persona de confianza."
+      }
+    ]
+  },
+  audience: [
+    {
+      eyebrow: "Para estudiantes",
+      title: "Disenado para usuarios Gen Z que ya viven con audifonos, pero rara vez ven el estres formarse en tiempo real.",
+      body: "Los estudiantes de 15 a 22 anos ya usan la musica para atravesar la presion. EchoMind convierte ese habito familiar en apoyo emocional preventivo."
+    },
+    {
+      eyebrow: "Para instituciones",
+      title: "Pensado como infraestructura emocional para campus, no como un arreglo reactivo despues de la crisis.",
+      body: "Escuelas privadas, universidades, internados y centros de consejeria pueden adoptar EchoMind en un modelo B2B2C para mover el apoyo hacia antes, reducir el estigma y ampliar la intervencion temprana."
+    }
+  ],
+  supportHub: {
+    eyebrow: "Soporte del producto",
+    title: "Haz que el soporte sea tan claro, silencioso y confiable como el producto mismo.",
+    body: "Desde el primer emparejamiento hasta el despliegue en campus y los controles de privacidad, EchoMind incluye una capa de soporte completa para que estudiantes, familias e instituciones lo adopten con confianza.",
+    cards: [
+      {
+        kicker: "01",
+        title: "Activacion del usuario",
+        body: "Recibe ayuda con el emparejamiento, la configuracion de la linea base emocional, la playlist calmante y la primera sesion guiada de regulacion.",
+        link: "Obtener ayuda de activacion"
+      },
+      {
+        kicker: "02",
+        title: "Despliegue en campus",
+        body: "Revisa guias de implementacion, configuracion del panel administrativo, modelos de consentimiento y protocolos de escalamiento para escuelas y equipos de consejeria.",
+        link: "Hablar con el equipo de campus"
+      },
+      {
+        kicker: "03",
+        title: "Confianza y seguridad",
+        body: "Consulta rapidamente permisos de datos, controles de privacidad, protecciones del dispositivo y los momentos en que el apoyo escalado puede activarse.",
+        link: "Ver controles de privacidad"
+      }
+    ],
+    communityKicker: "Comunidad",
+    communityText: "Sigue novedades del producto, contenido educativo y noticias de colaboraciones con campus."
+  },
+  policy: {
+    eyebrow: "Centro de confianza",
+    title: "Terminos, privacidad y limites legales claros, porque los datos emocionales exigen un estandar mas alto.",
+    body: "La confianza es central en la experiencia EchoMind. Hacemos explicitos el uso de datos, los limites del producto y las responsabilidades de apoyo para que personas e instituciones entiendan como se usa, protege y gobierna el sistema.",
+    terms: {
+      kicker: "Terminos de Uso",
+      title: "Terminos de Uso",
+      items: [
+        "EchoMind ofrece regulacion emocional preventiva y no reemplaza el diagnostico ni el tratamiento clinico.",
+        "Los usuarios menores pueden requerir consentimiento de tutores o de la institucion segun la normativa local.",
+        "Los usuarios son responsables de la seguridad del dispositivo, el acceso a la cuenta y las conexiones autorizadas.",
+        "El mal uso o las infracciones de seguridad pueden provocar funciones restringidas o desactivadas."
+      ]
+    },
+    privacy: {
+      kicker: "Politica de Privacidad",
+      title: "Politica de Privacidad",
+      items: [
+        "Solo se recopilan senales biometricas necesarias, interacciones del dispositivo y datos de tendencias de recuperacion.",
+        "Los datos se usan principalmente para intervencion en tiempo real, lineas base personales y mejora de seguridad del producto.",
+        "Los contactos de confianza, apoyo en campus o enlaces de telemedicina se activan solo con consentimiento explicito.",
+        "Los usuarios pueden revisar, exportar, retirar o eliminar los datos personales que se puedan gestionar."
+      ]
+    },
+    legal: {
+      kicker: "Aviso Legal",
+      title: "Aviso Legal",
+      body: "EchoMind esta posicionado como un producto de inteligencia emocional preventiva y apoyo. No afirma ofrecer diagnostico medico, respuesta de emergencia ni sustitucion de intervencion en crisis.",
+      items: [
+        "Si un usuario esta en peligro inmediato o en crisis, debe contactar directamente a servicios de emergencia o apoyo profesional local.",
+        "Las integraciones con campus, consejeria y telemedicina pueden variar segun jurisdiccion, politica institucional o estado de la alianza.",
+        "Las visualizaciones e insights del producto son ayudas informativas y no deben considerarse consejo medico, consejo legal ni resultados garantizados.",
+        "La disponibilidad real de funciones, politicas de retencion y flujos de soporte se rige por acuerdos formales y por la version mas reciente de las politicas publicadas."
+      ]
+    }
+  },
+  closing: {
+    eyebrow: "Por que EchoMind",
+    title: "No es otra herramienta de salud mental que el usuario tenga que recordar abrir.",
+    body: "Es preventiva, fluida y esta integrada en un habito diario. Mientras la mayoria de soluciones esperan para reaccionar, EchoMind protege los momentos justo antes de perder el equilibrio.",
+    strip: ["Prevencion por diseno", "Fluidez en la vida diaria", "Apoyo con menos estigma", "Pensado para las rutinas Gen Z"]
+  },
+  cta: {
+    eyebrow: "EchoMind",
+    title: "Haz que el cuidado emocional se sienta tan natural como ponerse los audifonos.",
+    body: "Inteligencia emocional preventiva creada para la nueva generacion de estudiantes, campus y sistemas de cuidado.",
+    actions: ["Contactar al equipo", "Volver arriba"]
+  },
+  footer: {
+    tagline: "Inteligencia emocional preventiva para la generacion que ya vive dentro de sus audifonos.",
+    links: ["Soporte del Producto", "Terminos de Uso", "Politica de Privacidad", "Aviso Legal", "Redes Sociales"],
+    fineprint: "© 2026 EchoMind. Mental Active Noise Cancellation es una descripcion conceptual del producto, no una promesa de resultado medico."
+  }
+};
+
 const ja = {
   ...en,
   htmlLang: "ja",
@@ -725,7 +992,7 @@ const ko = {
   }
 };
 
-const translations = { zh, en, ja, ko };
+const translations = { zh, en, ja, ko, es };
 
 const header = document.querySelector(".site-header");
 const nav = document.querySelector(".site-nav");
