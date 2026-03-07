@@ -1000,6 +1000,7 @@ const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const navCta = document.querySelector(".nav-cta");
 const langSwitch = document.querySelector(".lang-switch");
 const langButtons = Array.from(document.querySelectorAll("[data-lang-trigger]"));
+const searchShell = document.querySelector(".search-shell");
 const searchInput = document.querySelector(".search-input");
 const searchResults = document.querySelector(".search-results");
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -1656,6 +1657,12 @@ function getSearchMatches(query) {
   });
 }
 
+function syncSearchState() {
+  if (!searchShell || !searchInput) return;
+  const isOpen = document.activeElement === searchInput || Boolean(searchInput.value.trim());
+  searchShell.classList.toggle("is-open", isOpen);
+}
+
 function renderSearchResults() {
   if (!searchInput || !searchResults) return;
   const copy = translations[currentLanguage];
@@ -1689,20 +1696,33 @@ function renderSearchResults() {
       searchInput.value = "";
       searchResults.hidden = true;
       searchResults.innerHTML = "";
+      syncSearchState();
     });
     searchResults.appendChild(button);
   });
 }
 
 function bindSearch() {
-  if (!searchInput || !searchResults) return;
+  if (!searchInput || !searchResults || !searchShell) return;
 
-  searchInput.addEventListener("input", renderSearchResults);
-  searchInput.addEventListener("focus", renderSearchResults);
+  searchInput.addEventListener("input", () => {
+    syncSearchState();
+    renderSearchResults();
+  });
+
+  searchInput.addEventListener("focus", () => {
+    syncSearchState();
+    renderSearchResults();
+  });
+
+  searchInput.addEventListener("blur", () => {
+    window.setTimeout(syncSearchState, 0);
+  });
 
   document.addEventListener("click", (event) => {
-    if (!searchResults.contains(event.target) && event.target !== searchInput) {
+    if (!searchShell.contains(event.target)) {
       searchResults.hidden = true;
+      window.setTimeout(syncSearchState, 0);
     }
   });
 
@@ -1710,8 +1730,11 @@ function bindSearch() {
     if (event.key === "Escape") {
       searchResults.hidden = true;
       searchInput.blur();
+      syncSearchState();
     }
   });
+
+  syncSearchState();
 }
 
 function bindLanguageSwitch() {
