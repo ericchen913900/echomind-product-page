@@ -8,6 +8,8 @@ const zh = {
     "EchoMind 是專為 Z 世代設計的 AI 驅動預防性情緒智能系統，將情緒穩定能力隱藏於智慧型耳機之中。",
   navLabel: "主要導覽",
   languageLabel: "語言切換",
+  menuOpenLabel: "開啟導覽",
+  menuCloseLabel: "關閉導覽",
   searchPlaceholder: "搜尋支援、條款、隱私...",
   searchEmpty: "找不到對應內容，請試試 support、privacy 或 legal。",
   searchSections: [
@@ -275,6 +277,8 @@ const en = {
     "EchoMind is an AI-driven preventive emotional intelligence system for Gen Z, hidden inside smart earbuds to detect stress early and respond in real time.",
   navLabel: "Primary navigation",
   languageLabel: "Language switcher",
+  menuOpenLabel: "Open navigation",
+  menuCloseLabel: "Close navigation",
   searchPlaceholder: "Search support, terms, privacy...",
   searchEmpty: "No matching section found. Try support, privacy, or legal.",
   searchSections: [
@@ -542,6 +546,8 @@ const es = {
     "EchoMind es un sistema de inteligencia emocional preventiva impulsado por IA para la Generación Z, integrado en audifonos inteligentes para detectar el estres temprano y responder en tiempo real.",
   navLabel: "Navegacion principal",
   languageLabel: "Selector de idioma",
+  menuOpenLabel: "Abrir navegacion",
+  menuCloseLabel: "Cerrar navegacion",
   searchPlaceholder: "Buscar soporte, terminos, privacidad...",
   searchEmpty: "No se encontro contenido relacionado. Prueba soporte, privacidad o legal.",
   searchSections: [
@@ -808,6 +814,8 @@ const ja = {
   title: "EchoMind | Emotional Operating System",
   navLabel: "メインナビゲーション",
   languageLabel: "言語切替",
+  menuOpenLabel: "ナビゲーションを開く",
+  menuCloseLabel: "ナビゲーションを閉じる",
   searchPlaceholder: "サポート、利用規約、プライバシーを検索...",
   searchEmpty: "一致する項目が見つかりません。support、privacy、legal を試してください。",
   searchSections: [
@@ -904,6 +912,8 @@ const ko = {
   title: "EchoMind | Emotional Operating System",
   navLabel: "주요 내비게이션",
   languageLabel: "언어 전환",
+  menuOpenLabel: "내비게이션 열기",
+  menuCloseLabel: "내비게이션 닫기",
   searchPlaceholder: "지원, 약관, 개인정보를 검색하세요...",
   searchEmpty: "일치하는 항목이 없습니다. support, privacy, legal 을 시도해 보세요.",
   searchSections: [
@@ -998,6 +1008,7 @@ const header = document.querySelector(".site-header");
 const nav = document.querySelector(".site-nav");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const navCta = document.querySelector(".nav-cta");
+const menuToggle = document.querySelector(".menu-toggle");
 const langSwitch = document.querySelector(".lang-switch");
 const langButtons = Array.from(document.querySelectorAll("[data-lang-trigger]"));
 const searchShell = document.querySelector(".search-shell");
@@ -1129,6 +1140,7 @@ let metricAnimated = false;
 let targetExplodeProgress = 0;
 let renderedExplodeProgress = 0;
 let explodeRafId = 0;
+let isMenuOpen = false;
 
 [...explodeSteps, ...featureCards, ...soundCards, ...supportSteps, ...audienceCards].forEach((card) => {
   card.tabIndex = 0;
@@ -1154,6 +1166,20 @@ function persistLanguage(lang) {
 
 function setText(node, value) {
   if (node && value !== undefined) node.textContent = value;
+}
+
+function isMobileLayout() {
+  return window.innerWidth <= 760;
+}
+
+function setMenuState(nextState) {
+  if (!header || !menuToggle) return;
+  isMenuOpen = Boolean(nextState) && isMobileLayout();
+  header.classList.toggle("is-menu-open", isMenuOpen);
+  menuToggle.setAttribute("aria-expanded", String(isMenuOpen));
+
+  const copy = translations[currentLanguage];
+  menuToggle.setAttribute("aria-label", isMenuOpen ? copy.menuCloseLabel : copy.menuOpenLabel);
 }
 
 function setScrollProgress() {
@@ -1265,6 +1291,7 @@ function applyLanguage(lang) {
   if (nav) nav.setAttribute("aria-label", copy.navLabel);
   if (langSwitch) langSwitch.setAttribute("aria-label", copy.languageLabel);
   if (searchInput) searchInput.placeholder = copy.searchPlaceholder;
+  if (menuToggle) menuToggle.setAttribute("aria-label", isMenuOpen ? copy.menuCloseLabel : copy.menuOpenLabel);
 
   langButtons.forEach((button) => {
     const isActive = button.dataset.langTrigger === lang;
@@ -1737,12 +1764,38 @@ function bindSearch() {
   syncSearchState();
 }
 
+function bindMobileMenu() {
+  if (!menuToggle || !header) return;
+
+  menuToggle.addEventListener("click", () => {
+    setMenuState(!isMenuOpen);
+  });
+
+  [...navLinks, navCta].filter(Boolean).forEach((element) => {
+    element.addEventListener("click", () => {
+      if (isMobileLayout()) setMenuState(false);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!isMobileLayout() || !isMenuOpen) return;
+    if (!header.contains(event.target)) setMenuState(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobileLayout()) setMenuState(false);
+  });
+
+  setMenuState(false);
+}
+
 function bindLanguageSwitch() {
   langButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const nextLanguage = button.dataset.langTrigger;
       if (!nextLanguage || nextLanguage === currentLanguage || !translations[nextLanguage]) return;
       applyLanguage(nextLanguage);
+      if (isMobileLayout()) setMenuState(false);
     });
   });
 }
@@ -1759,6 +1812,7 @@ function init() {
   bindDashboard();
   bindLanguageSwitch();
   bindSearch();
+  bindMobileMenu();
 
   window.addEventListener("scroll", setScrollProgress, { passive: true });
   window.addEventListener("resize", setScrollProgress);
