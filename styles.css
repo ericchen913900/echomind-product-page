@@ -14,6 +14,8 @@
   --radius-xl: 36px;
   --radius-lg: 28px;
   --radius-md: 20px;
+  --cut-lg: 42px;
+  --cut-sm: 18px;
   --max-width: 1220px;
   --font-sans: "Manrope", "Noto Sans TC", "Noto Sans JP", "Noto Sans KR", "Avenir Next", sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
@@ -389,6 +391,113 @@ button {
   padding: 52px 12px 24px;
 }
 
+.hero-copy,
+.hero-metrics div,
+.statement-card,
+.problem-card,
+.feature-card,
+.sound-card,
+.phone-frame,
+.support-step,
+.audience-card,
+.cta-card,
+.support-hub-card,
+.policy-card,
+.legal-note,
+.community-strip {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-copy,
+.hero-metrics div,
+.statement-card,
+.problem-card,
+.feature-card,
+.sound-card,
+.phone-frame,
+.support-step,
+.audience-card,
+.cta-card,
+.support-hub-card,
+.policy-card,
+.legal-note,
+.community-strip,
+.device-stage {
+  clip-path: polygon(0 0, calc(100% - var(--cut-lg)) 0, 100% var(--cut-lg), 100% 100%, var(--cut-sm) 100%, 0 calc(100% - var(--cut-sm)));
+}
+
+.hero-copy::before,
+.hero-metrics div::before,
+.statement-card::before,
+.problem-card::before,
+.feature-card::before,
+.sound-card::before,
+.phone-frame::before,
+.support-step::before,
+.audience-card::before,
+.cta-card::before,
+.support-hub-card::before,
+.policy-card::before,
+.legal-note::before,
+.community-strip::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(95, 136, 255, 0.1), transparent 28%),
+    radial-gradient(circle at 0 100%, rgba(184, 255, 215, 0.12), transparent 24%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 42%, rgba(95, 136, 255, 0.08) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-copy::after,
+.hero-metrics div::after,
+.statement-card::after,
+.problem-card::after,
+.feature-card::after,
+.sound-card::after,
+.phone-frame::after,
+.support-step::after,
+.audience-card::after,
+.cta-card::after,
+.support-hub-card::after,
+.policy-card::after,
+.legal-note::after,
+.community-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 126px;
+  height: 126px;
+  background: linear-gradient(135deg, rgba(95, 136, 255, 0.2), rgba(184, 255, 215, 0.08) 56%, transparent 56%);
+  clip-path: polygon(40% 0, 100% 0, 100% 60%, 72% 60%);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-copy > *,
+.hero-metrics div > *,
+.statement-card > *,
+.problem-card > *,
+.feature-card > *,
+.sound-card > *,
+.phone-frame > *,
+.support-step > *,
+.audience-card > *,
+.cta-card > *,
+.support-hub-card > *,
+.policy-card > *,
+.legal-note > *,
+.community-strip > * {
+  position: relative;
+  z-index: 1;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -443,6 +552,14 @@ button {
   margin-top: 22px;
   color: var(--muted);
   font-size: 1.04rem;
+}
+
+.hero-copy {
+  padding: clamp(28px, 4vw, 42px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(244, 247, 252, 0.54));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  box-shadow: var(--shadow);
 }
 
 .hero-actions {
@@ -551,7 +668,6 @@ button {
   position: relative;
   width: min(100%, 560px);
   aspect-ratio: 0.88;
-  border-radius: 48px;
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(232, 235, 244, 0.72)),
     radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 50%);
@@ -570,6 +686,19 @@ button {
   background:
     radial-gradient(circle at center, rgba(95, 136, 255, 0.16), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.58), transparent 42%);
+}
+
+.device-stage::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -30%;
+  width: 70%;
+  height: 22%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
+  transform: rotate(-18deg);
+  opacity: 0;
+  animation: stage-sweep 11s ease-in-out infinite;
 }
 
 .device-caption {
@@ -1670,6 +1799,27 @@ button {
   padding-bottom: 18px;
 }
 
+@keyframes stage-sweep {
+  0%,
+  100% {
+    transform: translate3d(-30%, -10%, 0) rotate(-18deg);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.32;
+  }
+
+  50% {
+    transform: translate3d(118%, 42%, 0) rotate(-18deg);
+    opacity: 0.72;
+  }
+
+  82% {
+    opacity: 0.18;
+  }
+}
+
 .cta-card {
   text-align: center;
 }
@@ -1835,6 +1985,11 @@ button {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --cut-lg: 26px;
+    --cut-sm: 12px;
+  }
+
   .page-shell {
     padding: 12px 12px 24px;
   }
@@ -1986,8 +2141,97 @@ button {
     display: inline-flex;
   }
 
+  .section {
+    margin-top: 22px;
+  }
+
   .hero {
-    padding-top: 34px;
+    gap: 22px;
+    padding-top: 20px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 17vw, 5rem);
+  }
+
+  .hero h1 span {
+    margin-top: 14px;
+    font-size: 1.05rem;
+    line-height: 1.14;
+  }
+
+  .hero-text {
+    margin-top: 18px;
+    font-size: 0.97rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero-actions .button,
+  .cta-card .hero-actions a {
+    width: 100%;
+  }
+
+  .button,
+  .nav-cta {
+    min-height: 48px;
+  }
+
+  .hero-metrics {
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .hero-metrics div,
+  .statement-card,
+  .feature-card,
+  .sound-card,
+  .phone-frame,
+  .support-step,
+  .audience-card,
+  .cta-card,
+  .support-hub-card,
+  .policy-card,
+  .legal-note,
+  .community-strip {
+    padding: 20px;
+  }
+
+  .hero-metrics dt {
+    font-size: 1.22rem;
+  }
+
+  .hero-metrics dd,
+  .problem-card p,
+  .support-hub-card p,
+  .policy-list,
+  .legal-note p,
+  .community-text {
+    font-size: 0.92rem;
+  }
+
+  .problem-card h3,
+  .support-hub-card h3,
+  .policy-card h3,
+  .legal-note h3 {
+    font-size: 1.18rem;
+  }
+
+  .support-link,
+  .social-link,
+  .footer-links a {
+    min-height: 42px;
   }
 
   .explode-stage-wrap {

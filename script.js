@@ -16,10 +16,10 @@ const zh = {
     { title: "系統", meta: "生理訊號、動態聲音與同意後支援", href: "#system" },
     { title: "功能", meta: "探索即時偵測、音訊調節與情緒儀表板", href: "#features" },
     { title: "壓力地圖", meta: "查看每日波動、每週熱點與模式洞察", href: "#dashboard" },
-    { title: "產品支援", meta: "啟用協助、校園部署與信任安全", href: "#product-support" },
-    { title: "使用條款", meta: "了解產品使用邊界與責任", href: "#terms-of-use" },
-    { title: "隱私權政策", meta: "查看資料使用、同意機制與刪除權限", href: "#privacy-policy" },
-    { title: "法律聲明", meta: "確認非醫療定位與危機支援界線", href: "#legal-disclaimer" }
+    { title: "產品支援", meta: "啟用協助、校園部署與信任安全", href: "product-support.html" },
+    { title: "使用條款", meta: "了解產品使用邊界與責任", href: "terms-of-use.html" },
+    { title: "隱私權政策", meta: "查看資料使用、同意機制與刪除權限", href: "privacy-policy.html" },
+    { title: "法律聲明", meta: "確認非醫療定位與危機支援界線", href: "legal-disclaimer.html" }
   ],
   nav: ["系統", "功能", "壓力地圖", "支援"],
   headerCta: "預約體驗",
@@ -222,6 +222,7 @@ const zh = {
     terms: {
       kicker: "使用條款",
       title: "使用條款",
+      link: "查看完整條款",
       items: [
         "EchoMind 提供預防性情緒調節，不取代臨床診斷或治療。",
         "未成年使用者應依地區規範完成監護人或校方同意流程。",
@@ -232,6 +233,7 @@ const zh = {
     privacy: {
       kicker: "隱私權政策",
       title: "隱私權政策",
+      link: "查看完整隱私權政策",
       items: [
         "僅收集必要的生理訊號、裝置互動與恢復趨勢資料。",
         "資料主要用於即時介入、個人化基準線與產品安全改進。",
@@ -242,6 +244,7 @@ const zh = {
     legal: {
       kicker: "法律聲明",
       title: "法律聲明",
+      link: "查看完整法律聲明",
       body: "EchoMind 目前定位為預防性情緒智能與支援產品，不宣稱提供醫療診斷、急救服務或危機處理替代方案。",
       items: [
         "若使用者處於立即危險、傷害風險或心理危機，應直接聯絡當地緊急服務或專業支援。",
@@ -285,10 +288,10 @@ const en = {
     { title: "System", meta: "Biometrics, adaptive sound, and escalation logic", href: "#system" },
     { title: "Features", meta: "Real-time detection, sound response, and emotional dashboard", href: "#features" },
     { title: "Stress Map", meta: "Daily waves, weekly hotspots, and pattern insight", href: "#dashboard" },
-    { title: "Product Support", meta: "Onboarding, campus rollout, and trust controls", href: "#product-support" },
-    { title: "Terms of Use", meta: "Product boundaries, access, and user responsibility", href: "#terms-of-use" },
-    { title: "Privacy Policy", meta: "Data use, consent, export, and deletion controls", href: "#privacy-policy" },
-    { title: "Legal Disclaimer", meta: "Non-medical positioning and crisis boundaries", href: "#legal-disclaimer" }
+    { title: "Product Support", meta: "Onboarding, campus rollout, and trust controls", href: "product-support.html" },
+    { title: "Terms of Use", meta: "Product boundaries, access, and user responsibility", href: "terms-of-use.html" },
+    { title: "Privacy Policy", meta: "Data use, consent, export, and deletion controls", href: "privacy-policy.html" },
+    { title: "Legal Disclaimer", meta: "Non-medical positioning and crisis boundaries", href: "legal-disclaimer.html" }
   ],
   nav: ["System", "Features", "Stress Map", "Support"],
   headerCta: "Book a Demo",
@@ -491,6 +494,7 @@ const en = {
     terms: {
       kicker: "Terms of Use",
       title: "Terms of Use",
+      link: "Read full terms",
       items: [
         "EchoMind provides preventive emotional regulation and does not replace clinical diagnosis or treatment.",
         "Minor users may require guardian or institutional consent based on local policy.",
@@ -501,6 +505,7 @@ const en = {
     privacy: {
       kicker: "Privacy Policy",
       title: "Privacy Policy",
+      link: "Read full privacy policy",
       items: [
         "Only necessary biometric signals, device interactions, and recovery-trend data are collected.",
         "Data is used primarily for real-time intervention, personal baselines, and product safety improvement.",
@@ -511,6 +516,7 @@ const en = {
     legal: {
       kicker: "Legal Disclaimer",
       title: "Legal Disclaimer",
+      link: "Read full legal disclaimer",
       body: "EchoMind is positioned as a preventive emotional intelligence and support product. It does not claim to provide medical diagnosis, emergency response, or crisis intervention replacement.",
       items: [
         "If a user is in immediate danger or crisis, contact local emergency or professional support directly.",
@@ -554,10 +560,10 @@ const es = {
     { title: "Sistema", meta: "Biometria, audio adaptativo y apoyo con consentimiento", href: "#system" },
     { title: "Funciones", meta: "Deteccion en tiempo real, respuesta sonora y panel emocional", href: "#features" },
     { title: "Mapa de Estres", meta: "Ondas diarias, puntos criticos semanales y patrones", href: "#dashboard" },
-    { title: "Soporte del Producto", meta: "Activacion, despliegue en campus y controles de confianza", href: "#product-support" },
-    { title: "Terminos de Uso", meta: "Limites del producto y responsabilidad del usuario", href: "#terms-of-use" },
-    { title: "Politica de Privacidad", meta: "Uso de datos, consentimiento, exportacion y borrado", href: "#privacy-policy" },
-    { title: "Aviso Legal", meta: "Posicionamiento no medico y limites ante crisis", href: "#legal-disclaimer" }
+    { title: "Soporte del Producto", meta: "Activacion, despliegue en campus y controles de confianza", href: "product-support.html" },
+    { title: "Terminos de Uso", meta: "Limites del producto y responsabilidad del usuario", href: "terms-of-use.html" },
+    { title: "Politica de Privacidad", meta: "Uso de datos, consentimiento, exportacion y borrado", href: "privacy-policy.html" },
+    { title: "Aviso Legal", meta: "Posicionamiento no medico y limites ante crisis", href: "legal-disclaimer.html" }
   ],
   nav: ["Sistema", "Funciones", "Mapa de Estres", "Soporte"],
   headerCta: "Reservar demo",
@@ -760,6 +766,7 @@ const es = {
     terms: {
       kicker: "Terminos de Uso",
       title: "Terminos de Uso",
+      link: "Leer terminos completos",
       items: [
         "EchoMind ofrece regulacion emocional preventiva y no reemplaza el diagnostico ni el tratamiento clinico.",
         "Los usuarios menores pueden requerir consentimiento de tutores o de la institucion segun la normativa local.",
@@ -770,6 +777,7 @@ const es = {
     privacy: {
       kicker: "Politica de Privacidad",
       title: "Politica de Privacidad",
+      link: "Leer politica de privacidad completa",
       items: [
         "Solo se recopilan senales biometricas necesarias, interacciones del dispositivo y datos de tendencias de recuperacion.",
         "Los datos se usan principalmente para intervencion en tiempo real, lineas base personales y mejora de seguridad del producto.",
@@ -780,6 +788,7 @@ const es = {
     legal: {
       kicker: "Aviso Legal",
       title: "Aviso Legal",
+      link: "Leer aviso legal completo",
       body: "EchoMind esta posicionado como un producto de inteligencia emocional preventiva y apoyo. No afirma ofrecer diagnostico medico, respuesta de emergencia ni sustitucion de intervencion en crisis.",
       items: [
         "Si un usuario esta en peligro inmediato o en crisis, debe contactar directamente a servicios de emergencia o apoyo profesional local.",
@@ -822,10 +831,10 @@ const ja = {
     { title: "System", meta: "生体信号、適応オーディオ、支援エスカレーション", href: "#system" },
     { title: "Features", meta: "リアルタイム検知、音響調整、感情ダッシュボード", href: "#features" },
     { title: "Stress Map", meta: "日次変動、週間ホットスポット、洞察", href: "#dashboard" },
-    { title: "Product Support", meta: "導入支援、学校展開、信頼管理", href: "#product-support" },
-    { title: "Terms of Use", meta: "利用範囲とユーザー責任", href: "#terms-of-use" },
-    { title: "Privacy Policy", meta: "データ利用、同意、削除管理", href: "#privacy-policy" },
-    { title: "Legal Disclaimer", meta: "医療代替ではないことの明確化", href: "#legal-disclaimer" }
+    { title: "Product Support", meta: "導入支援、学校展開、信頼管理", href: "product-support.html" },
+    { title: "Terms of Use", meta: "利用範囲とユーザー責任", href: "terms-of-use.html" },
+    { title: "Privacy Policy", meta: "データ利用、同意、削除管理", href: "privacy-policy.html" },
+    { title: "Legal Disclaimer", meta: "医療代替ではないことの明確化", href: "legal-disclaimer.html" }
   ],
   nav: ["System", "Features", "Stress Map", "Support"],
   headerCta: "デモ予約",
@@ -889,7 +898,19 @@ const ja = {
   policy: {
     ...en.policy,
     eyebrow: "Trust Center",
-    title: "感情データにふさわしい高い基準のための明確な規約と境界。"
+    title: "感情データにふさわしい高い基準のための明確な規約と境界。",
+    terms: {
+      ...en.policy.terms,
+      link: "利用規約全文"
+    },
+    privacy: {
+      ...en.policy.privacy,
+      link: "プライバシーポリシー全文"
+    },
+    legal: {
+      ...en.policy.legal,
+      link: "法的免責事項全文"
+    }
   },
   closing: {
     ...en.closing,
@@ -920,10 +941,10 @@ const ko = {
     { title: "System", meta: "생체 신호, 적응형 사운드, 지원 에스컬레이션", href: "#system" },
     { title: "Features", meta: "실시간 감지, 사운드 반응, 감정 대시보드", href: "#features" },
     { title: "Stress Map", meta: "일일 파형, 주간 핫스팟, 패턴 인사이트", href: "#dashboard" },
-    { title: "Product Support", meta: "온보딩, 캠퍼스 배포, 신뢰 제어", href: "#product-support" },
-    { title: "Terms of Use", meta: "제품 경계와 사용자 책임", href: "#terms-of-use" },
-    { title: "Privacy Policy", meta: "데이터 사용, 동의, 삭제 관리", href: "#privacy-policy" },
-    { title: "Legal Disclaimer", meta: "비의료 포지셔닝과 위기 경계", href: "#legal-disclaimer" }
+    { title: "Product Support", meta: "온보딩, 캠퍼스 배포, 신뢰 제어", href: "product-support.html" },
+    { title: "Terms of Use", meta: "제품 경계와 사용자 책임", href: "terms-of-use.html" },
+    { title: "Privacy Policy", meta: "데이터 사용, 동의, 삭제 관리", href: "privacy-policy.html" },
+    { title: "Legal Disclaimer", meta: "비의료 포지셔닝과 위기 경계", href: "legal-disclaimer.html" }
   ],
   nav: ["System", "Features", "Stress Map", "Support"],
   headerCta: "데모 예약",
@@ -985,7 +1006,19 @@ const ko = {
   policy: {
     ...en.policy,
     eyebrow: "Trust Center",
-    title: "감정 데이터에 더 높은 기준이 필요하기 때문에, 약관과 개인정보, 법적 경계를 분명히 합니다."
+    title: "감정 데이터에 더 높은 기준이 필요하기 때문에, 약관과 개인정보, 법적 경계를 분명히 합니다.",
+    terms: {
+      ...en.policy.terms,
+      link: "전체 이용약관 보기"
+    },
+    privacy: {
+      ...en.policy.privacy,
+      link: "전체 개인정보처리방침 보기"
+    },
+    legal: {
+      ...en.policy.legal,
+      link: "전체 법률 고지 보기"
+    }
   },
   closing: {
     ...en.closing,
@@ -1105,13 +1138,16 @@ const legalNote = document.querySelector("#legal-disclaimer");
 const termsKicker = termsCard.querySelector(".policy-kicker");
 const termsTitle = termsCard.querySelector("h3");
 const termsItems = Array.from(termsCard.querySelectorAll("li"));
+const termsLink = termsCard.querySelector(".policy-page-link");
 const privacyKicker = privacyCard.querySelector(".policy-kicker");
 const privacyTitle = privacyCard.querySelector("h3");
 const privacyItems = Array.from(privacyCard.querySelectorAll("li"));
+const privacyLink = privacyCard.querySelector(".policy-page-link");
 const legalKicker = legalNote.querySelector(".policy-kicker");
 const legalTitle = legalNote.querySelector("h3");
 const legalBody = legalNote.querySelector("p");
 const legalItems = Array.from(legalNote.querySelectorAll("li"));
+const legalLink = legalNote.querySelector(".policy-page-link");
 
 const closingSection = document.querySelector(".closing-section");
 const closingEyebrow = closingSection.querySelector(".closing-copy .eyebrow");
@@ -1387,13 +1423,16 @@ function applyLanguage(lang) {
   setText(policyBody, copy.policy.body);
   setText(termsKicker, copy.policy.terms.kicker);
   setText(termsTitle, copy.policy.terms.title);
+  setText(termsLink, copy.policy.terms.link);
   termsItems.forEach((item, index) => setText(item, copy.policy.terms.items[index]));
   setText(privacyKicker, copy.policy.privacy.kicker);
   setText(privacyTitle, copy.policy.privacy.title);
+  setText(privacyLink, copy.policy.privacy.link);
   privacyItems.forEach((item, index) => setText(item, copy.policy.privacy.items[index]));
   setText(legalKicker, copy.policy.legal.kicker);
   setText(legalTitle, copy.policy.legal.title);
   setText(legalBody, copy.policy.legal.body);
+  setText(legalLink, copy.policy.legal.link);
   legalItems.forEach((item, index) => setText(item, copy.policy.legal.items[index]));
 
   setText(closingEyebrow, copy.closing.eyebrow);
@@ -1718,8 +1757,12 @@ function renderSearchResults() {
     button.className = "search-result";
     button.innerHTML = `<span class="search-result-title">${item.title}</span><span class="search-result-meta">${item.meta}</span>`;
     button.addEventListener("click", () => {
-      const target = document.querySelector(item.href);
-      if (target) target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+      if (item.href.startsWith("#")) {
+        const target = document.querySelector(item.href);
+        if (target) target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+      } else {
+        window.location.href = item.href;
+      }
       searchInput.value = "";
       searchResults.hidden = true;
       searchResults.innerHTML = "";
