@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EchoMind | Emotional Operating System</title>
+    <meta
+      name="description"
+      content="EchoMind 是專為 Z 世代設計的 AI 驅動預防性情緒智能系統，將情緒穩定能力隱藏於智慧型耳機之中。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='26' fill='%230f141b'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='44' font-family='Arial' fill='white'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top">EchoMind</a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="#system">系統</a>
+          <a href="#features">功能</a>
+          <a href="#dashboard">壓力地圖</a>
+          <a href="#support">支援</a>
+        </nav>
+        <div class="header-utility">
+          <label class="search-shell">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input class="search-input" type="search" autocomplete="off" placeholder="搜尋支援、條款、隱私..." />
+            <div class="search-results" hidden></div>
+          </label>
+          <div class="lang-switch" role="group" aria-label="語言切換">
+            <button class="lang-button is-active" type="button" data-lang-trigger="zh">中</button>
+            <button class="lang-button" type="button" data-lang-trigger="en">EN</button>
+            <button class="lang-button" type="button" data-lang-trigger="ja">日</button>
+            <button class="lang-button" type="button" data-lang-trigger="ko">한</button>
+          </div>
+        </div>
+        <a class="nav-cta" href="#cta">預約體驗</a>
+      </header>
+
+      <main id="top">
+        <section class="hero section">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">AI-Driven Preventive Emotional Intelligence</p>
+            <h1>
+              EchoMind
+              <span>把情緒穩定，變成每天戴上的能力。</span>
+            </h1>
+            <p class="hero-text">
+              專為高壓 Z 世代打造的情緒作業系統，隱藏於智慧型耳機之中。
+              它在壓力失控前先察覺、先調節、先把你帶回穩定。
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#features">探索核心功能</a>
+              <a class="button button-secondary" href="#audience">查看適用場景</a>
+            </div>
+            <dl class="hero-metrics">
+              <div>
+                <dt>15-22</dt>
+                <dd>主要客群年齡帶</dd>
+              </div>
+              <div>
+                <dt>64%</dt>
+                <dd>青少年低潮時以音樂自我應對</dd>
+              </div>
+              <div>
+                <dt>4 layers</dt>
+                <dd>從偵測到升級支援的完整介入梯度</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-visual reveal" data-depth="18">
+            <div class="aurora aurora-one"></div>
+            <div class="aurora aurora-two"></div>
+            <div class="device-stage">
+              <div class="device-caption">Mental Active Noise Cancellation</div>
+              <div class="sound-ring sound-ring-one"></div>
+              <div class="sound-ring sound-ring-two"></div>
+              <div class="earbud earbud-left"></div>
+              <div class="earbud earbud-right"></div>
+              <div class="core-panel">
+                <span class="core-label">Emotion Baseline</span>
+                <strong>Adaptive Calm Engine</strong>
+                <p>GSR . HRV . Motion . Audio Routing</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section statement reveal">
+          <div class="statement-card">
+            <p class="eyebrow">Prevention, not reaction</p>
+            <h2>不是在崩潰之後安慰你，而是在失控之前先安靜下來。</h2>
+            <p>
+              EchoMind 不是需要你主動打開的心理健康 App，也不是帶有距離感的治療工具。
+              它無縫存在於你本來就會戴上的耳機中，在情緒混亂累積成風暴前，先做一次心理主動降噪。
+            </p>
+          </div>
+        </section>
+
+        <section class="section problem-section">
+          <div class="problem-copy reveal">
+            <p class="eyebrow">Why now</p>
+            <h2>這不是少數人的情緒問題，而是數位世代每天都在累積的系統性壓力。</h2>
+            <p>
+              EchoMind 誕生的原因，不只是因為青少年有壓力，而是因為壓力通常無形、持續，且沒有被及時管理。
+              真正缺少的是一種可即時偵測、低污名、自然融入日常習慣的預防性系統。
+            </p>
+          </div>
+          <div class="problem-stats">
+            <article class="problem-card reveal">
+              <strong>1 in 7</strong>
+              <h3>全球青少年正面臨心理健康困擾</h3>
+              <p>世界衛生組織指出，約每 7 位青少年就有 1 位經歷心理健康障礙，焦慮與憂鬱最常見。</p>
+            </article>
+            <article class="problem-card reveal">
+              <strong>44%</strong>
+              <h3>高中生曾長期感到悲傷或絕望</h3>
+              <p>CDC 資料顯示，近一半美國高中生在 2021 年回報持續性的悲傷或無望感。</p>
+            </article>
+            <article class="problem-card reveal">
+              <strong>64%</strong>
+              <h3>心情低落時會直接戴上耳機聽音樂</h3>
+              <p>音樂早已是青少年最自然的情緒應對方式，但目前仍停留在被動、沒有結構的自我安撫。</p>
+            </article>
+            <article class="problem-card reveal">
+              <strong>0</strong>
+              <h3>現有工具能在壓力升高時即時介入</h3>
+              <p>多數心理健康解法仍依賴使用者主動打開 App 或尋求協助，無法在失衡前即刻回應。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section explode-section" id="components">
+          <div class="explode-copy">
+            <div class="explode-copy-intro reveal">
+              <p class="eyebrow">Exploded view</p>
+              <h2>把 EchoMind 拆開，看見真正埋在耳機裡的情緒作業系統。</h2>
+              <p>
+                從外殼、感測層、聲學核心到電源與連線模組，每一層都不是炫技，而是為了更早讀懂壓力、更自然介入情緒變化。
+              </p>
+              <div class="explode-progress" aria-hidden="true">
+                <div class="explode-progress-line"><span class="explode-progress-bar"></span></div>
+                <div class="explode-progress-nodes">
+                  <span class="explode-progress-node" data-explode-node="0"></span>
+                  <span class="explode-progress-node" data-explode-node="1"></span>
+                  <span class="explode-progress-node" data-explode-node="2"></span>
+                  <span class="explode-progress-node" data-explode-node="3"></span>
+                </div>
+              </div>
+            </div>
+            <div class="explode-steps">
+              <article class="explode-step reveal" data-explode-step="0">
+                <span>01</span>
+                <h3>Acoustic Shell</h3>
+                <p>以柔和包覆與聲學結構降低外界噪訊，讓後續調節更精準、更自然。</p>
+              </article>
+              <article class="explode-step reveal" data-explode-step="1">
+                <span>02</span>
+                <h3>Biometric Sensor Ring</h3>
+                <p>在耳道穩定位置持續讀取 GSR、HRV 與動作訊號，建立個人化情緒基準線。</p>
+              </article>
+              <article class="explode-step reveal" data-explode-step="2">
+                <span>03</span>
+                <h3>Adaptive Audio Core</h3>
+                <p>將即時生理訊號轉成聲音決策：慢下 BPM、加入接地低頻、引導呼吸節奏。</p>
+              </article>
+              <article class="explode-step reveal" data-explode-step="3">
+                <span>04</span>
+                <h3>Power + Connection Stem</h3>
+                <p>負責續航、低延遲同步與安全連接 App，讓升級支援與情緒資料串成閉環。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="explode-stage-wrap reveal">
+            <div class="explode-stage" aria-label="EchoMind exploded view">
+              <div class="explode-halo"></div>
+              <div class="explode-rings">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="explode-stage-meta">
+                <span class="explode-stage-chip">Layer 01</span>
+                <strong class="explode-stage-title">Acoustic Shell</strong>
+                <p class="explode-stage-body">A protective acoustic shell shapes comfort, isolates noise, and prepares the system for cleaner emotion-aware modulation.</p>
+              </div>
+
+              <div class="explode-device" aria-hidden="true">
+                <div class="explode-part explode-shell"></div>
+                <div class="explode-part explode-sensor"></div>
+                <div class="explode-part explode-core"></div>
+                <div class="explode-part explode-stem"></div>
+              </div>
+
+              <div class="explode-labels">
+                <div class="explode-label" data-explode-label="0"><span>Acoustic Shell</span></div>
+                <div class="explode-label" data-explode-label="1"><span>Biometric Sensor Ring</span></div>
+                <div class="explode-label" data-explode-label="2"><span>Adaptive Audio Core</span></div>
+                <div class="explode-label" data-explode-label="3"><span>Power + Connection Stem</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section system-grid" id="system">
+          <div class="sticky-copy reveal">
+            <p class="eyebrow">A hidden emotional OS</p>
+            <h2>讓生理訊號、聲音工程與人性化支援同步工作。</h2>
+            <p>
+              從耳道內部的即時生物回饋，到音訊層的細緻動態調節，再到必要時的升級介入，EchoMind 將原本被動的「聽音樂紓壓」升級為有結構的情緒穩定系統。
+            </p>
+          </div>
+          <div class="system-cards">
+            <article class="feature-card reveal">
+              <span>01</span>
+              <h3>即時生物辨識偵測</h3>
+              <p>
+                醫療級膚電活動感測器追蹤 GSR、心率變異與動作狀態，建立個人化情緒基準線，於壓力飆升的第一時間辨識異常。
+              </p>
+            </article>
+            <article class="feature-card reveal">
+              <span>02</span>
+              <h3>動態聲音工程</h3>
+              <p>
+                當心率上升、呼吸變淺或動作變得焦躁，系統會即時重塑音場：降低 BPM、加入接地低頻、提示呼吸節奏，並平滑切換到平靜播放清單。
+              </p>
+            </article>
+            <article class="feature-card reveal">
+              <span>03</span>
+              <h3>情緒視覺化儀表板</h3>
+              <p>
+                每日波動圖、每週壓力熱點、觸發模式與恢復時間追蹤，讓壓力不再只是模糊感受，而是可以理解的模式。
+              </p>
+            </article>
+            <article class="feature-card reveal">
+              <span>04</span>
+              <h3>分級升級支援系統</h3>
+              <p>
+                當壓力持續不降，系統會進一步提供引導式呼吸、接地練習，並在同意下連接校園諮商、遠距醫療或信任聯絡人。
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section feature-spotlight" id="features">
+          <div class="spotlight-copy reveal">
+            <p class="eyebrow">Sound that responds to you</p>
+            <h2>每一次調整，都不是播放更大聲，而是讓身體重新回到可承受的頻率。</h2>
+          </div>
+          <div class="sound-grid">
+            <article class="sound-card reveal">
+              <div class="sound-visual heart-visual">
+                <span class="status-dot"></span>
+                <div class="wave wave-heart"></div>
+              </div>
+              <h3>心率飆升</h3>
+              <p>降低音樂 BPM，加入更深的低頻接地音，讓節奏先放慢，你的內部節拍再跟上。</p>
+            </article>
+            <article class="sound-card reveal">
+              <div class="sound-visual breath-visual">
+                <div class="breath-orbit"></div>
+                <div class="breath-orbit breath-delay"></div>
+              </div>
+              <h3>呼吸急促</h3>
+              <p>嵌入近乎無感的節奏提示，引導呼吸逐步回穩，而不是用強提醒打斷當下情境。</p>
+            </article>
+            <article class="sound-card reveal">
+              <div class="sound-visual motion-visual">
+                <div class="motion-bar"></div>
+                <div class="motion-bar"></div>
+                <div class="motion-bar"></div>
+              </div>
+              <h3>動作焦躁</h3>
+              <p>啟動穩定型音效分層，用更平整的聲音邊界降低感官負荷，幫助注意力重新聚焦。</p>
+            </article>
+            <article class="sound-card reveal">
+              <div class="sound-visual calm-visual">
+                <div class="playlist-pill">Calm Playlist Routing</div>
+              </div>
+              <h3>平順切換</h3>
+              <p>在不打斷使用者沉浸感的前提下，無縫過渡到預設平靜歌單，把介入做得像空氣一樣自然。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section dashboard-section" id="dashboard">
+          <div class="dashboard-copy reveal">
+            <p class="eyebrow">Stress map dashboard</p>
+            <h2>把看不見的壓力，變成能理解、能回顧、能提前準備的模式。</h2>
+            <p>
+              EchoMind App 讓每日情緒波動、每週壓力熱點與高峰時段一目了然。
+              它不只告訴你今天累，而是告訴你壓力何時開始、被什麼觸發，以及你需要多久才恢復。
+            </p>
+          </div>
+          <div class="dashboard-mock reveal" aria-label="EchoMind 壓力地圖預覽">
+            <div class="phone-frame">
+              <div class="phone-topbar">
+                <span>Today</span>
+                <strong>Stress Map</strong>
+                <span>09:42</span>
+              </div>
+              <div class="chart-card">
+                <div class="chart-header">
+                  <span>Daily Wave</span>
+                  <strong>Calm restored in 18 min</strong>
+                </div>
+                <div class="wave-chart" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="heat-card">
+                <div class="chart-header">
+                  <span>Weekly Hotspots</span>
+                  <strong>Tue / Thu · 14:00 - 17:00</strong>
+                </div>
+                <div class="heat-grid" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="insight-card">
+                <span class="insight-tag">Pattern Insight</span>
+                <p>壓力高峰與學業表現時段重疊，運動後 25 分鐘恢復速度最快。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section support-section" id="support">
+          <div class="support-copy reveal">
+            <p class="eyebrow">Escalation with consent</p>
+            <h2>當壓力不是一段聲音就能解決，系統會知道什麼時候該升級支援。</h2>
+          </div>
+          <div class="support-steps">
+            <article class="support-step reveal">
+              <span class="step-index">A1</span>
+              <h3>Gentle Reset</h3>
+              <p>首先以最輕量的方式介入：調音、呼吸節奏提示、接地練習，不打斷學習或生活節奏。</p>
+            </article>
+            <article class="support-step reveal">
+              <span class="step-index">A2</span>
+              <h3>Guided Recovery</h3>
+              <p>若壓力訊號持續不降，系統會啟動更完整的引導式穩定流程，協助使用者重新獲得控制感。</p>
+            </article>
+            <article class="support-step reveal">
+              <span class="step-index">A3</span>
+              <h3>Trusted Connection</h3>
+              <p>在使用者授權下，銜接校園諮商、遠距醫療或信任聯絡人，把預防性系統延伸到真實支持網絡。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section audience-section" id="audience">
+          <div class="audience-card reveal">
+            <p class="eyebrow">For students</p>
+            <h2>為每天戴著耳機、卻未必看得見壓力累積的 Z 世代而設計。</h2>
+            <p>
+              15 至 22 歲的高中生、大學生與國際學生，早已習慣用耳機和音樂陪自己度過壓力時刻。
+              EchoMind 把這個既有習慣，升級成真正有用的預防性支持。
+            </p>
+          </div>
+          <div class="audience-card reveal">
+            <p class="eyebrow">For institutions</p>
+            <h2>作為校園的情緒基礎設施，而不是單次事件後的補救方案。</h2>
+            <p>
+              私立高中、大學、寄宿學校與諮商中心可透過 B2B2C 模式導入 EchoMind，將情緒支持前移到日常，降低污名感，也提升觸及率與早期介入機會。
+            </p>
+          </div>
+        </section>
+
+        <section class="section support-hub" id="product-support">
+          <div class="support-hub-copy reveal">
+            <p class="eyebrow">Product support</p>
+            <h2>把產品支援做得像產品本身一樣清楚、安靜、可靠。</h2>
+            <p>
+              從首次配對、校園導入到使用者隱私與安全設定，EchoMind 提供一套完整支援體驗，讓學生、家長與機構都能放心使用。
+            </p>
+          </div>
+          <div class="support-hub-grid">
+            <article class="support-hub-card reveal">
+              <span class="support-hub-kicker">01</span>
+              <h3>使用者啟用</h3>
+              <p>協助完成配對、情緒基準線建立、Calm Playlist 設定與第一次壓力調節體驗。</p>
+              <a class="support-link" href="mailto:support@echomind.ai">取得啟用協助</a>
+            </article>
+            <article class="support-hub-card reveal">
+              <span class="support-hub-kicker">02</span>
+              <h3>校園部署</h3>
+              <p>提供校方與諮商中心導入流程、管理儀表板說明、同意機制與支援升級規範。</p>
+              <a class="support-link" href="mailto:campus@echomind.ai">洽詢校園方案</a>
+            </article>
+            <article class="support-hub-card reveal">
+              <span class="support-hub-kicker">03</span>
+              <h3>信任與安全</h3>
+              <p>快速查看資料權限、隱私設定、裝置安全機制與何時會啟用升級支援。</p>
+              <a class="support-link" href="#privacy-policy">查看隱私控制</a>
+            </article>
+          </div>
+          <div class="community-strip reveal" id="community">
+            <div class="community-copy">
+              <span class="community-kicker">Community</span>
+              <p class="community-text">追蹤最新產品更新、教育內容與校園合作動態。</p>
+            </div>
+            <div class="community-links">
+              <a class="social-link" href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+              <a class="social-link" href="https://www.youtube.com" target="_blank" rel="noreferrer">YouTube</a>
+              <a class="social-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="social-link" href="https://www.tiktok.com" target="_blank" rel="noreferrer">TikTok</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section policy-section" id="legal">
+          <div class="policy-copy reveal">
+            <p class="eyebrow">Trust center</p>
+            <h2>清楚列出使用條款、隱私權政策與法律聲明，因為情緒資料值得更高標準。</h2>
+            <p>
+              EchoMind 的體驗核心是信任。我們把資料使用、產品邊界與支援責任寫清楚，讓個人與機構都能理解這套系統如何被使用、保護與管理。
+            </p>
+          </div>
+          <div class="policy-grid">
+            <article class="policy-card reveal" id="terms-of-use">
+              <span class="policy-kicker">Terms of Use</span>
+              <h3>使用條款</h3>
+              <ul class="policy-list">
+                <li>EchoMind 提供預防性情緒調節，不取代臨床診斷或治療。</li>
+                <li>未成年使用者應依地區規範完成監護人或校方同意流程。</li>
+                <li>使用者需對裝置安全、帳號存取與授權連結負責。</li>
+                <li>違反安全或濫用規範時，部分功能可能被限制或停用。</li>
+              </ul>
+            </article>
+            <article class="policy-card reveal" id="privacy-policy">
+              <span class="policy-kicker">Privacy Policy</span>
+              <h3>隱私權政策</h3>
+              <ul class="policy-list">
+                <li>僅收集必要的生理訊號、裝置互動與恢復趨勢資料。</li>
+                <li>資料主要用於即時介入、個人化基準線與產品安全改進。</li>
+                <li>信任聯絡人、校園支援或遠距醫療連結需在明確同意下啟用。</li>
+                <li>使用者可檢視、匯出、撤回或刪除可管理的個人資料。</li>
+              </ul>
+            </article>
+          </div>
+          <article class="legal-note reveal" id="legal-disclaimer">
+            <span class="policy-kicker">Legal Disclaimer</span>
+            <h3>法律聲明</h3>
+            <p>
+              EchoMind 目前定位為預防性情緒智能與支援產品，不宣稱提供醫療診斷、急救服務或危機處理替代方案。
+            </p>
+            <ul class="policy-list">
+              <li>若使用者處於立即危險、傷害風險或心理危機，應直接聯絡當地緊急服務或專業支援。</li>
+              <li>校園、諮商與遠距醫療串接功能可能因地區法規、機構政策或合作狀態而不同。</li>
+              <li>產品畫面與洞察屬資訊輔助，不應被視為醫療建議、法律意見或保證結果。</li>
+              <li>實際可用功能、資料保留政策與支援流程，應以正式合約與最新政策版本為準。</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section closing-section reveal">
+          <div class="closing-copy">
+            <p class="eyebrow">Why EchoMind</p>
+            <h2>不是另一個要你自己記得打開的心理健康工具。</h2>
+            <p>
+              它預防、無縫、貼近日常習慣。當現有解法仍停留在被動回應時，EchoMind 已開始主動守住每一次快要失衡的瞬間。
+            </p>
+          </div>
+          <div class="closing-strip">
+            <span>Preventive by design</span>
+            <span>Seamless in daily life</span>
+            <span>Stigma-light support</span>
+            <span>Built for Gen Z routines</span>
+          </div>
+        </section>
+
+        <section class="section cta-section" id="cta">
+          <div class="cta-card reveal">
+            <p class="eyebrow">EchoMind</p>
+            <h2>把情緒照護，做得像戴上耳機一樣自然。</h2>
+            <p>
+              為新一代學生、校園與照護系統打造的預防性情緒智能產品。
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:hello@echomind.ai">聯絡團隊</a>
+              <a class="button button-secondary" href="#top">回到頂部</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <p class="footer-logo">EchoMind</p>
+          <p class="footer-tagline">Preventive emotional intelligence for the generation that already lives in headphones.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#product-support">產品支援</a>
+          <a href="#terms-of-use">使用條款</a>
+          <a href="#privacy-policy">隱私權政策</a>
+          <a href="#legal-disclaimer">法律聲明</a>
+          <a href="#community">社群媒體</a>
+        </div>
+        <p class="footer-fineprint">© 2026 EchoMind. Mental Active Noise Cancellation is a product concept description, not a promise of medical outcome.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
