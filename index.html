@@ -32,7 +32,12 @@
         </nav>
         <div class="header-utility">
           <label class="search-shell">
-            <span class="search-icon" aria-hidden="true">⌕</span>
+            <span class="search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="M16 16l4.25 4.25"></path>
+              </svg>
+            </span>
             <input class="search-input" type="search" autocomplete="off" placeholder="搜尋支援、條款、隱私..." />
             <div class="search-results" hidden></div>
           </label>
@@ -45,9 +50,10 @@
           </div>
         </div>
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-          <span class="menu-toggle-bar"></span>
-          <span class="menu-toggle-bar"></span>
-          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-icon" aria-hidden="true">
+            <span class="menu-toggle-line menu-toggle-line-top"></span>
+            <span class="menu-toggle-line menu-toggle-line-bottom"></span>
+          </span>
         </button>
         <a class="nav-cta" href="#cta">預約體驗</a>
       </header>
