@@ -1090,6 +1090,7 @@ const explodeParts = Array.from(document.querySelectorAll(".explode-part"));
 const explodeLabels = Array.from(document.querySelectorAll(".explode-label"));
 
 const stickyCopy = document.querySelector(".sticky-copy");
+const systemSection = document.querySelector(".system-grid");
 const systemStory = document.querySelector(".system-story");
 const systemEyebrow = stickyCopy.querySelector(".eyebrow");
 const systemTitle = stickyCopy.querySelector("h2");
@@ -1321,6 +1322,7 @@ function setScrollProgress() {
   document.documentElement.style.setProperty("--scroll-progress", String(progress));
   header?.classList.toggle("is-scrolled", window.scrollY > 18);
   updateExplodedView();
+  updateFeatureStoryFromScroll();
 }
 
 function setMetricTargets() {
@@ -1368,10 +1370,11 @@ function animateMetrics() {
   });
 }
 
-function renderFeaturePanel(index = activeFeatureIndex) {
+function renderFeaturePanel(index = activeFeatureIndex, force = false) {
   const copy = translations[currentLanguage].features;
   const feature = copy.cards[index];
   if (!feature) return;
+  if (!force && index === activeFeatureIndex) return;
 
   activeFeatureIndex = index;
   featureCards.forEach((card, cardIndex) => {
@@ -1389,6 +1392,31 @@ function renderFeaturePanel(index = activeFeatureIndex) {
   systemProgressNodes.forEach((node, nodeIndex) => {
     node.classList.toggle("is-active", nodeIndex <= index);
   });
+}
+
+function updateFeatureStoryFromScroll() {
+  if (!systemSection || !featureCards.length) return;
+
+  const sectionBounds = systemSection.getBoundingClientRect();
+  if (sectionBounds.bottom < 0 || sectionBounds.top > window.innerHeight) return;
+
+  const focusLine = window.innerHeight * (window.innerWidth <= 1120 ? 0.28 : 0.46);
+  let nextIndex = activeFeatureIndex;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+
+  featureCards.forEach((card, index) => {
+    const bounds = card.getBoundingClientRect();
+    if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
+
+    const center = bounds.top + bounds.height / 2;
+    const distance = Math.abs(center - focusLine);
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      nextIndex = index;
+    }
+  });
+
+  renderFeaturePanel(nextIndex);
 }
 
 function renderExplodeStep(index = activeExplodeIndex) {
@@ -1559,7 +1587,7 @@ function applyLanguage(lang) {
   decorateSplitReveals();
   renderMotionBands();
   renderExplodeStep(activeExplodeIndex);
-  renderFeaturePanel(activeFeatureIndex);
+  renderFeaturePanel(activeFeatureIndex, true);
   updateDashboard();
   renderSearchResults();
 }
@@ -1598,29 +1626,7 @@ function bindFeatureCards() {
     card.addEventListener("focus", activate);
   });
 
-  if (!("IntersectionObserver" in window)) {
-    renderFeaturePanel(0);
-    return;
-  }
-
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-      if (!visible.length) return;
-      const index = featureCards.indexOf(visible[0].target);
-      if (index >= 0) renderFeaturePanel(index);
-    },
-    {
-      threshold: [0.35, 0.6, 0.9],
-      rootMargin: "-18% 0px -30% 0px"
-    }
-  );
-
-  featureCards.forEach((card) => sectionObserver.observe(card));
-  renderFeaturePanel(0);
+  renderFeaturePanel(0, true);
 }
 
 function getExplodeIndexFromProgress(progress) {
