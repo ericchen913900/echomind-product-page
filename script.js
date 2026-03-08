@@ -161,6 +161,7 @@ const zh = {
   support: {
     eyebrow: "經同意後的升級支援",
     title: "當壓力不是一段聲音就能解決，系統會知道什麼時候該升級支援。",
+    body: "EchoMind 將升級機制拆成清楚的節奏層級，讓使用者、校園與支援網絡都知道什麼時候系統只是安靜介入，什麼時候才真正升級到人。",
     cards: [
       {
         title: "輕量重置",
@@ -433,6 +434,7 @@ const en = {
   support: {
     eyebrow: "Escalation with consent",
     title: "When sound alone is not enough, the system knows when to step support up.",
+    body: "EchoMind turns escalation into a clear sequence so users, campuses, and support networks know when the product is quietly stabilizing and when it is intentionally moving toward human care.",
     cards: [
       {
         title: "Gentle Reset",
@@ -705,6 +707,7 @@ const es = {
   support: {
     eyebrow: "Escalamiento con consentimiento",
     title: "Cuando el sonido por si solo no basta, el sistema sabe cuando aumentar el apoyo.",
+    body: "EchoMind convierte la escalada en una secuencia clara para que usuarios, campus y redes de apoyo sepan cuando el producto solo estabiliza en silencio y cuando realmente pasa a intervencion humana.",
     cards: [
       {
         title: "Reinicio Suave",
@@ -1045,6 +1048,8 @@ const menuToggle = document.querySelector(".menu-toggle");
 const langSwitch = document.querySelector(".lang-switch");
 const langButtons = Array.from(document.querySelectorAll("[data-lang-trigger]"));
 const searchShell = document.querySelector(".search-shell");
+const searchOverlay = document.querySelector(".search-overlay");
+const searchOverlayBackdrop = document.querySelector(".search-overlay-backdrop");
 const searchInput = document.querySelector(".search-input");
 const searchResults = document.querySelector(".search-results");
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -1085,9 +1090,14 @@ const explodeParts = Array.from(document.querySelectorAll(".explode-part"));
 const explodeLabels = Array.from(document.querySelectorAll(".explode-label"));
 
 const stickyCopy = document.querySelector(".sticky-copy");
+const systemStory = document.querySelector(".system-story");
 const systemEyebrow = stickyCopy.querySelector(".eyebrow");
 const systemTitle = stickyCopy.querySelector("h2");
 const systemBody = stickyCopy.querySelectorAll("p")[1];
+const systemStageChip = document.querySelector(".system-stage-chip");
+const systemStageTitle = document.querySelector(".system-stage-title");
+const systemStageBody = document.querySelector(".system-stage-body");
+const systemProgressNodes = Array.from(document.querySelectorAll(".system-progress-node"));
 
 const featureCards = Array.from(document.querySelectorAll(".feature-card"));
 const coreLabel = document.querySelector(".core-label");
@@ -1116,6 +1126,7 @@ const insightText = document.querySelector(".insight-card p");
 const supportCopy = document.querySelector(".support-copy");
 const supportEyebrow = supportCopy.querySelector(".eyebrow");
 const supportTitle = supportCopy.querySelector("h2");
+const supportBody = supportCopy.querySelectorAll("p")[1];
 const supportSteps = Array.from(document.querySelectorAll(".support-step"));
 
 const audienceCards = Array.from(document.querySelectorAll(".audience-card"));
@@ -1182,6 +1193,7 @@ let renderedExplodeProgress = 0;
 let explodeRafId = 0;
 let isMenuOpen = false;
 let searchHideTimer = 0;
+let searchSelectionIndex = -1;
 
 [...explodeSteps, ...featureCards, ...soundCards, ...supportSteps, ...audienceCards].forEach((card) => {
   card.tabIndex = 0;
@@ -1370,6 +1382,13 @@ function renderFeaturePanel(index = activeFeatureIndex) {
   setText(coreTitle, feature.title);
   setText(coreBody, feature.body);
   setText(deviceCaption, copy.panelCaptions[index]);
+  setText(systemStageChip, `${copy.signalLabel} ${String(index + 1).padStart(2, "0")}`);
+  setText(systemStageTitle, copy.panelCaptions[index]);
+  setText(systemStageBody, feature.body);
+  systemStory?.style.setProperty("--system-progress", String(index / Math.max(featureCards.length - 1, 1)));
+  systemProgressNodes.forEach((node, nodeIndex) => {
+    node.classList.toggle("is-active", nodeIndex <= index);
+  });
 }
 
 function renderExplodeStep(index = activeExplodeIndex) {
@@ -1479,6 +1498,7 @@ function applyLanguage(lang) {
 
   setText(supportEyebrow, copy.support.eyebrow);
   setText(supportTitle, copy.support.title);
+  setText(supportBody, copy.support.body);
   supportSteps.forEach((card, index) => {
     setText(card.querySelector("h3"), copy.support.cards[index].title);
     setText(card.querySelector("p"), copy.support.cards[index].body);
@@ -1810,11 +1830,66 @@ function getSearchMatches(query) {
   });
 }
 
+function setSearchOverlayState(nextState) {
+  if (!searchOverlay || !searchShell) return;
+
+  const isOpen = Boolean(nextState);
+  window.clearTimeout(searchHideTimer);
+
+  searchShell.classList.toggle("is-overlay-open", isOpen);
+  document.body.classList.toggle("search-overlay-open", isOpen);
+  searchOverlay.setAttribute("aria-hidden", String(!isOpen));
+
+  if (isOpen) {
+    searchOverlay.hidden = false;
+    window.requestAnimationFrame(() => {
+      searchOverlay.classList.add("is-visible");
+    });
+    return;
+  }
+
+  searchOverlay.classList.remove("is-visible");
+  searchHideTimer = window.setTimeout(() => {
+    searchOverlay.hidden = true;
+  }, 320);
+}
+
+function getSearchResultButtons() {
+  return Array.from(searchResults?.querySelectorAll(".search-result") || []);
+}
+
+function setActiveSearchResult(index) {
+  const buttons = getSearchResultButtons();
+  if (!buttons.length) {
+    searchSelectionIndex = -1;
+    return;
+  }
+
+  const boundedIndex = Math.max(0, Math.min(index, buttons.length - 1));
+  searchSelectionIndex = boundedIndex;
+
+  buttons.forEach((button, buttonIndex) => {
+    const isActive = buttonIndex === boundedIndex;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+}
+
+function activateSearchResult(index = searchSelectionIndex) {
+  const buttons = getSearchResultButtons();
+  if (!buttons.length) return;
+
+  const boundedIndex = index >= 0 ? Math.min(index, buttons.length - 1) : 0;
+  buttons[boundedIndex]?.click();
+}
+
 function syncSearchState() {
   if (!searchShell || !searchInput) return;
-  const isOpen = searchShell.contains(document.activeElement) || Boolean(searchInput.value.trim());
+  const hasValue = Boolean(searchInput.value.trim());
+  const isOpen = searchShell.contains(document.activeElement) || hasValue;
   searchShell.classList.toggle("is-open", isOpen);
-  searchShell.classList.toggle("has-value", Boolean(searchInput.value.trim()));
+  searchShell.classList.toggle("has-value", hasValue);
+  setSearchOverlayState(isOpen);
 }
 
 function toggleSearchResultsVisibility(nextState) {
@@ -1834,6 +1909,7 @@ function toggleSearchResultsVisibility(nextState) {
   searchHideTimer = window.setTimeout(() => {
     searchResults.hidden = true;
   }, 260);
+  searchSelectionIndex = -1;
 }
 
 function renderSearchResults() {
@@ -1851,6 +1927,7 @@ function renderSearchResults() {
   toggleSearchResultsVisibility(true);
 
   searchResults.innerHTML = "";
+  searchSelectionIndex = -1;
 
   if (normalized && !matches.length) {
     const empty = document.createElement("div");
@@ -1865,6 +1942,7 @@ function renderSearchResults() {
     button.type = "button";
     button.className = "search-result";
     button.style.setProperty("--result-index", String(index));
+    button.setAttribute("aria-selected", "false");
     button.innerHTML = `<span class="search-result-title">${item.title}</span><span class="search-result-meta">${item.meta}</span>`;
     button.addEventListener("click", () => {
       if (item.href.startsWith("#")) {
@@ -1875,10 +1953,13 @@ function renderSearchResults() {
       }
       searchInput.value = "";
       toggleSearchResultsVisibility(false);
+      searchInput.blur();
       syncSearchState();
     });
     searchResults.appendChild(button);
   });
+
+  setActiveSearchResult(0);
 }
 
 function bindSearch() {
@@ -1904,6 +1985,7 @@ function bindSearch() {
   document.addEventListener("click", (event) => {
     if (!searchShell.contains(event.target)) {
       toggleSearchResultsVisibility(false);
+      searchInput.blur();
       window.setTimeout(() => {
         syncSearchState();
         renderSearchResults();
@@ -1912,6 +1994,26 @@ function bindSearch() {
   });
 
   searchInput.addEventListener("keydown", (event) => {
+    const buttons = getSearchResultButtons();
+
+    if (event.key === "ArrowDown" && buttons.length) {
+      event.preventDefault();
+      setActiveSearchResult(searchSelectionIndex + 1);
+      return;
+    }
+
+    if (event.key === "ArrowUp" && buttons.length) {
+      event.preventDefault();
+      setActiveSearchResult(searchSelectionIndex - 1);
+      return;
+    }
+
+    if (event.key === "Enter" && buttons.length) {
+      event.preventDefault();
+      activateSearchResult();
+      return;
+    }
+
     if (event.key === "Escape") {
       if (searchInput.value.trim()) {
         searchInput.value = "";
@@ -1939,6 +2041,12 @@ function bindSearch() {
       syncSearchState();
       renderSearchResults();
     }
+  });
+
+  searchOverlayBackdrop?.addEventListener("click", () => {
+    toggleSearchResultsVisibility(false);
+    searchInput.blur();
+    syncSearchState();
   });
 
   syncSearchState();
