@@ -654,6 +654,7 @@ export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const copy = translations[language];
+  const assetBase = import.meta.env.BASE_URL;
 
   useEffect(() => {
     document.title = copy.title;
@@ -843,7 +844,7 @@ export function App() {
             <figure className="hero-visual reveal" aria-label={copy.hero.imageAlt}>
               <div className="prototype-placeholder main pulse-surface has-image">
                 <img
-                  src="/S__106610984.jpg"
+                  src={`${assetBase}S__106610984.jpg`}
                   alt={copy.hero.imageAlt}
                   className="hero-product-image"
                   loading="eager"
@@ -907,7 +908,10 @@ export function App() {
                   preload="metadata"
                   aria-label={copy.technology.placeholderPrimary.description}
                 >
-                  <source src="/echomind-prototype-1.mp4" type="video/mp4" />
+                  <source
+                    src={`${assetBase}echomind-prototype-1.mp4`}
+                    type="video/mp4"
+                  />
                 </video>
                 <strong>{copy.technology.placeholderPrimary.title}</strong>
                 <span>{copy.technology.placeholderPrimary.size}</span>
@@ -923,7 +927,10 @@ export function App() {
                   preload="metadata"
                   aria-label={copy.technology.placeholderSecondary.description}
                 >
-                  <source src="/echomind-prototype-2.mp4" type="video/mp4" />
+                  <source
+                    src={`${assetBase}echomind-prototype-2.mp4`}
+                    type="video/mp4"
+                  />
                 </video>
                 <strong>{copy.technology.placeholderSecondary.title}</strong>
                 <span>{copy.technology.placeholderSecondary.size}</span>
